@@ -3,7 +3,6 @@ import Head from "next/head";
 
 const Layout = styled.main`
     position: relative;
-    width: 100%;
 `
 interface LayoutProps {
     className?: string
