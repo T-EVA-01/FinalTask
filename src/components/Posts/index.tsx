@@ -12,6 +12,10 @@ const Posts = styled.div`
     .post {
         margin-bottom: 20px;
     }
+
+    .post {
+        margin-bottom: 20px;
+    }
 `
 
 interface PostsProps {
