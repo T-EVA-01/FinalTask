@@ -1,23 +1,25 @@
-import Layout from '../components/Layout'
-interface IndexPageProps {
+import Layout from '../components/Layout';
+import Posts from '../components/Posts';
 
-}
+import { getPosts } from '../../lib/api';
 
-const Home = () => {
+import { IndexPageProps } from '../../interfaces/interfaces';
+
+const Home = ({ posts }: IndexPageProps) => {
   return (
       <Layout>
-        <div>
-          Привет Мир!
-        </div>
+        <Posts data={posts}/>
       </Layout>
   )
 }
 
 export async function getStaticProps() {
+
+  const posts = getPosts();
   
   return {
     props: {
-
+      posts 
     }
   }
 
