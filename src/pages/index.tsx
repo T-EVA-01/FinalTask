@@ -1,8 +1,5 @@
 import Layout from '../components/Layout';
 import Posts from '../components/Posts';
-
-import { getPosts } from '../../lib/api';
-
 import { IndexPageProps } from '../../interfaces/interfaces';
 
 const Home = ({ posts }: IndexPageProps) => {
@@ -15,8 +12,9 @@ const Home = ({ posts }: IndexPageProps) => {
 
 export async function getStaticProps() {
 
-  const posts = getPosts();
-  
+  const res = await fetch('http://localhost:3000/api/posts')
+  const posts = await res.json()
+
   return {
     props: {
       posts 
