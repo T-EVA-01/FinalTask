@@ -28,7 +28,6 @@ const Index = ({ className, post: {id, title, description, image}}: PostProps) =
         <Post className={className}>
             <PostContentContainer className={'media-content'}>
                 <Image src={image} width={'300px'} height={'300px'}/>
-                {/* <div>{image}</div> */}
             </PostContentContainer>
             <PostContentContainer className={"text-content"}>
                 <>

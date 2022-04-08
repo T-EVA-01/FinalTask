@@ -10,6 +10,10 @@ const Posts = styled.div`
     input {
         margin-bottom: 20px;
     }
+
+    .post {
+        margin-bottom: 20px;
+    }
 `
 
 interface PostsProps {
@@ -24,7 +28,7 @@ const Index = ({className, data}: PostsProps) => {
             <input type="text" placeholder='Поиск'/>
             {data.map((item, index) => {
                 return(
-                    <Post post={item} key={index}/> 
+                    <Post className='post' post={item} key={index}/> 
                 )
             })}
         </Posts>
