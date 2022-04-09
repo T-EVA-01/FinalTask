@@ -26,7 +26,7 @@ interface PostsProps {
 
 const Index = ({className, data}: PostsProps) => {
 
-    const [booleanSortFlag, setBooleanSortFlag] = useState(false);
+    const [booleanSortFlag, setBooleanSortFlag] = useState(true);
     const [inputValue, setInputValue] = useState('');
 
     const iOptions: IOptions = {
