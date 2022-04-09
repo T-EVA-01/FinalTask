@@ -1,6 +1,6 @@
 export interface IOptions {
-    sort: 'ASC' | 'DESK'
-    filter?: {
+    sort: 'ASC' | 'DESC'
+    filter: {
         name: string
         value: string
     }
