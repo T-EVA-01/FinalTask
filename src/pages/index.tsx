@@ -2,9 +2,11 @@ import Layout from '../components/Layout';
 import Posts from '../components/Posts';
 import { IndexPageProps } from '../../interfaces/interfaces';
 
-const Home = ({ posts }: IndexPageProps) => {
+const Home = ({ posts, className }: IndexPageProps) => {
+
+  
   return (
-      <Layout>
+      <Layout className={className}>
         <Posts data={posts}/>
       </Layout>
   )

@@ -1,6 +1,6 @@
 export interface IOptions {
     sort: 'ASC' | 'DESK'
-    filter: {
+    filter?: {
         name: string
         value: string
     }
@@ -15,4 +15,5 @@ export interface IPost {
 
 export interface IndexPageProps {
     posts: IPost[]
+    className?: string 
 }
