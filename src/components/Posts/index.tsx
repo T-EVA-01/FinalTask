@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { IPost, IOptions } from '../../../interfaces/interfaces';
-import Post from './Post';
+import { IPost } from '../../../interfaces/interfaces';
+import Post from '../Post';
 import PostsHeader from './PostsHeader';
 import { useState, useEffect } from 'react';
 
