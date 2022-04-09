@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IPost, IOptions } from '../../../interfaces/interfaces';
 import Post from '../Post';
 import PostsHeader from './PostsHeader';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useFilters } from '../../helpers/hooks';
 
 const Posts = styled.div`
@@ -50,9 +50,9 @@ const Index = ({className, data}: PostsProps) => {
                 <button onClick={() => setBooleanSortFlag(!booleanSortFlag)}>{booleanSortFlag ? "DESC" : "ASC"}</button>
             </PostsHeader>
 
-            {posts.map((item, index) => {
+            {posts.map((item) => {
                 return(
-                    <Post className='post' post={item} key={index}/> 
+                    <Post className='post' post={item} key={item.id}/> 
                 )
             })}
         </Posts>
