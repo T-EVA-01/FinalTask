@@ -32,7 +32,7 @@ const Index = ({className, data}: PostsProps) => {
     const iOptions: IOptions = {
         sort: booleanSortFlag ? "ASC" : "DESC",
         filter: {
-            name: "Не понятно",
+            name: "description",
             value: inputValue
         }
     }

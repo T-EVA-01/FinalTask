@@ -1,7 +1,7 @@
 export interface IOptions {
     sort: 'ASC' | 'DESC'
     filter: {
-        name: string
+        name: keyof IPost
         value: string
     }
 }
