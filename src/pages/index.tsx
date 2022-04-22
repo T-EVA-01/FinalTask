@@ -1,12 +1,14 @@
 import Layout from '../components/Layout';
 import Posts from '../components/Posts';
 import { IndexPageProps } from '../../interfaces/interfaces';
+import Counter from '../components/Counter'
 
 const Home = ({ posts, className }: IndexPageProps) => {
 
   
   return (
       <Layout className={className}>
+        <Counter/>
         <Posts data={posts}/>
       </Layout>
   )

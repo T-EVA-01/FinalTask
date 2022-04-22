@@ -1,9 +1,11 @@
-import type { AppProps } from 'next/app'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import fonts from '../styles/fonts'
-import variables from '../styles/variables'
-import breakpoints from '../styles/breakpoints'
-import colors from '../styles/colors'
+import type { AppProps } from 'next/app';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { Provider } from 'react-redux';
+import store from '../slices/index';
+import fonts from '../styles/fonts';
+import variables from '../styles/variables';
+import breakpoints from '../styles/breakpoints';
+import colors from '../styles/colors';
 
 const theme: object = {
   variables,
@@ -54,11 +56,12 @@ const GlobalStyles = createGlobalStyle`
 function MyApp({ Component, pageProps }: AppProps) {
 
   return( 
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-      <GlobalStyles/>
-    </ThemeProvider>
-
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+        <GlobalStyles/>
+     </ThemeProvider>
+    </Provider>
   )
 }
 
