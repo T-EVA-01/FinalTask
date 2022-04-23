@@ -3,7 +3,10 @@ import { IPost, IOptions } from '../../../interfaces/interfaces';
 import Post from '../Post';
 import PostsHeader from './PostsHeader';
 import { useState } from 'react';
-import { useFilters } from '../../helpers/hooks';
+// import { useFilters } from '../../helpers/hooks';
+
+// import { sortPosts } from '../../slices/postsSlice';
+import { useSelector } from 'react-redux';
 
 const Posts = styled.div`
     width: 60%;
@@ -37,7 +40,20 @@ const Index = ({className, data}: PostsProps) => {
         }
     }
 
-    const posts = useFilters(data, iOptions)
+    console.log(data)
+
+    // ПЫТАЮСЬ ОТФИЛЬТРОВАТЬ И ОТСОРТИРОВАТЬ ДАННЫЕ ПОСТОВ ИЗ СТОРА В ХУКЕ
+
+    // useFilters(data, iOptions)
+    
+    const posts = useSelector((state: any) => state.posts.data)
+    // const dispatch = useDispatch()
+
+    // useEffect(() => {
+
+    //     dispatch(sortPosts(booleanSortFlag ? "ASC" : "DESC"))
+
+    // }, [booleanSortFlag])
 
     const onChangeInputValue = (e: any) => {
         setInputValue(e.target.value)
@@ -50,7 +66,7 @@ const Index = ({className, data}: PostsProps) => {
                 <button onClick={() => setBooleanSortFlag(!booleanSortFlag)}>{booleanSortFlag ? "DESC" : "ASC"}</button>
             </PostsHeader>
 
-            {posts.map((item) => {
+            {posts.map((item: IPost) => {
                 return(
                     <Post className='post' post={item} key={item.id}/> 
                 )

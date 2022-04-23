@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { IPost, IOptions } from "../../interfaces/interfaces";
+import { sortPosts, setPosts } from '../slices/postsSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export function useFilters(array: IPost[], options: IOptions) {
-    const [posts, setPosts] = useState(array);
+    // const [posts, setPosts] = useState(array);
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
 
@@ -18,8 +22,7 @@ export function useFilters(array: IPost[], options: IOptions) {
 
         });
 
-        setPosts(filteredPosts)
-    }, [array, options])
 
-    return posts 
+        dispatch(setPosts(filteredPosts))
+    }, [array, options])
 }

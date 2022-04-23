@@ -14,6 +14,6 @@ export interface IPost {
 } 
 
 export interface IndexPageProps {
-    posts: IPost[]
+    data: IPost[]
     className?: string 
 }
