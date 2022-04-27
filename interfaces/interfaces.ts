@@ -7,13 +7,27 @@ export interface IOptions {
 }
 
 export interface IPost {
-    id: number
+    id: string
+    sortId: number
     title: string
     description: string
-    image: string
+    type: string 
+    image?: string
 } 
 
 export interface IndexPageProps {
     data: IPost[]
     className?: string 
+}
+
+export interface requestParameters {
+    searchString: string 
+    postType: string
+}
+
+export interface PostState {
+    ids: string[]
+    entities: IPost[]
+    loading: 'loading' | 'idle'
+    error: any
 }

@@ -1,21 +1,16 @@
 import styled from 'styled-components';
-import { IPost, IOptions } from '../../../interfaces/interfaces';
+import { IPost } from '../../../interfaces/interfaces';
 import Post from '../Post';
 import PostsHeader from './PostsHeader';
-import { useState } from 'react';
-// import { useFilters } from '../../helpers/hooks';
-
-// import { sortPosts } from '../../slices/postsSlice';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { sortPosts, changeSortState } from '../../store/slicers/postsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import Form from '../Form/Form'
 
 const Posts = styled.div`
     width: 60%;
     margin: 0 auto;
     padding: 15px;
-
-    .post {
-        margin-bottom: 20px;
-    }
 
     .post {
         margin-bottom: 20px;
@@ -29,44 +24,24 @@ interface PostsProps {
 
 const Index = ({className, data}: PostsProps) => {
 
-    const [booleanSortFlag, setBooleanSortFlag] = useState(true);
-    const [inputValue, setInputValue] = useState('');
+    const sortState = useSelector((state: any) => state.posts.sortState )
+    const dispatch = useDispatch()
 
-    const iOptions: IOptions = {
-        sort: booleanSortFlag ? "ASC" : "DESC",
-        filter: {
-            name: "description",
-            value: inputValue
-        }
-    }
+    useEffect(() => {
 
-    console.log(data)
+        dispatch(sortPosts());
 
-    // ПЫТАЮСЬ ОТФИЛЬТРОВАТЬ И ОТСОРТИРОВАТЬ ДАННЫЕ ПОСТОВ ИЗ СТОРА В ХУКЕ
-
-    // useFilters(data, iOptions)
-    
-    const posts = useSelector((state: any) => state.posts.data)
-    // const dispatch = useDispatch()
-
-    // useEffect(() => {
-
-    //     dispatch(sortPosts(booleanSortFlag ? "ASC" : "DESC"))
-
-    // }, [booleanSortFlag])
-
-    const onChangeInputValue = (e: any) => {
-        setInputValue(e.target.value)
-    }
+    }, [sortState])
 
     return(
         <Posts className={className}>
+
             <PostsHeader>
-                <input value={inputValue} type="text" placeholder='Поиск' onChange={onChangeInputValue}/>
-                <button onClick={() => setBooleanSortFlag(!booleanSortFlag)}>{booleanSortFlag ? "DESC" : "ASC"}</button>
+                <Form />
+                <button onClick={() => dispatch(changeSortState())}>{sortState}</button>
             </PostsHeader>
 
-            {posts.map((item: IPost) => {
+            {data.map((item: IPost) => {
                 return(
                     <Post className='post' post={item} key={item.id}/> 
                 )

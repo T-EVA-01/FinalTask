@@ -21,17 +21,22 @@ interface PostProps {
     post: IPost
 }
 
-const Index = ({ className, post: {id, title, description, image}}: PostProps) => {
-
+const Index = ({ className, post: {id, title, description, image, type}}: PostProps) => {
 
     return(
         <Post className={className}>
-            <PostContentContainer className={'media-content'}>
-                <Image src={image} width={'300px'} height={'300px'}/>
-            </PostContentContainer>
+            {image 
+                ?             
+                    <PostContentContainer className={'media-content'}>
+                        <Image src={image} width={'300px'} height={'300px'}/>
+                    </PostContentContainer>
+
+                :   <></>
+            }
             <PostContentContainer className={"text-content"}>
                 <>
                     <div>{"id:" + id}</div>
+                    <div>{"Post type: " + type}</div>
                     <div>{title}</div>
                     <div>{description}</div>
                 </>
