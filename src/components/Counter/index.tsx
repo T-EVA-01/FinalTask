@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, setAmount, incrementByAmount, decrimentByAmount } from '../../slices/counterSlice';
+import { increment, decrement, setAmount, incrementByAmount, decrimentByAmount } from '../../store/slicers/counterSlice';
 
 const Counter = styled.div`
     width: 100%;
