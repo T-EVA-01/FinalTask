@@ -1,22 +1,16 @@
 import Layout from '../components/Layout';
 import Posts from '../components/Posts';
 import { IndexPageProps } from '../../interfaces/interfaces';
-import Counter from '../components/Counter'
+import { useSelector } from 'react-redux';
+import { IPost } from '../../interfaces/interfaces'
 
-import { useSelector, useDispatch } from 'react-redux';
-import { setPosts } from '../slices/postsSlice';
+const Home = ({ className }: IndexPageProps) => {
 
-const Home = ({ data, className }: IndexPageProps) => {
-
-  const dispatch = useDispatch();
-  dispatch(setPosts(data))
-  const posts = useSelector((state: any) => state.posts.data)
-
-  // console.log(posts)
-
+  const posts = useSelector((state: any) => state.posts.entities) 
+  
   return (
       <Layout className={className}>
-        <Counter/>
+        {/* <Counter/> */}
         <Posts data={posts}/>
       </Layout>
   )
@@ -24,12 +18,34 @@ const Home = ({ data, className }: IndexPageProps) => {
 
 export async function getStaticProps() {
 
-  const res = await fetch('http://localhost:3000/api/posts')
-  const data = await res.json()
+  const res = await fetch('https://dev.retnback.only.com.ru/api/news/list')
+  const data = await res.json();
+
+  const posts = data.data.map((post: IPost, index: number) => {
+    return {
+      id: `post${index+1}`,
+      sortId: index+1,
+      title: post.title,
+      description: post.description,
+      type: post.type  
+    };
+  });
+
+  const ids = posts.map((post: IPost) => {
+    return post.id
+  })
 
   return {
     props: {
-      data 
+      initialReduxState: {
+        posts: {
+          ids: ids,
+          entities: posts,
+          sortState: 'DESC',
+          loading: '',
+          error: null
+        }
+      }
     }
   }
 

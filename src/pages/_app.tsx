@@ -1,11 +1,11 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
-import store from '../slices/index';
 import fonts from '../styles/fonts';
 import variables from '../styles/variables';
 import breakpoints from '../styles/breakpoints';
 import colors from '../styles/colors';
+import { useStore } from '../store/store';
 
 const theme: object = {
   variables,
@@ -54,13 +54,15 @@ const GlobalStyles = createGlobalStyle`
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
+  
+  const store = useStore(pageProps.initialReduxState);
 
   return( 
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
         <GlobalStyles/>
-     </ThemeProvider>
+      </ThemeProvider>
     </Provider>
   )
 }
