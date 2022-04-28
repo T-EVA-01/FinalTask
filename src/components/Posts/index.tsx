@@ -1,20 +1,15 @@
 import styled from 'styled-components';
 import { IPost } from '../../../interfaces/interfaces';
 import Post from '../Post';
-import PostsHeader from './PostsHeader';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { sortPosts, changeSortState } from '../../store/slicers/postsSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import Form from '../Form/Form'
+import variables from '../../styles/variables';
+// import colors from '../../styles/colors';
 
 const Posts = styled.div`
-    width: 60%;
+    width: ${variables.layoutWidth};
     margin: 0 auto;
-    padding: 15px;
-
-    .post {
-        margin-bottom: 20px;
-    }
 `
 
 interface PostsProps {
@@ -35,12 +30,7 @@ const Index = ({className, data}: PostsProps) => {
 
     return(
         <Posts className={className}>
-
-            <PostsHeader>
-                <Form />
-                <button onClick={() => dispatch(changeSortState())}>{sortState}</button>
-            </PostsHeader>
-
+            <button onClick={() => dispatch(changeSortState())}>{sortState}</button>
             {data.map((item: IPost) => {
                 return(
                     <Post className='post' post={item} key={item.id}/> 

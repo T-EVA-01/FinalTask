@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import Head from "next/head";
+import colors from "../../styles/colors";
 
 const Layout = styled.main`
     position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: ${colors.grey};
 `
 interface LayoutProps {
     className?: string
@@ -14,7 +18,7 @@ const Index = ({className, children}: LayoutProps) => {
     return(
         <>
             <Head>
-                <title>SecondTask</title>
+                <title>OnlyFinalTask</title>
                 <meta charSet="utf-8" />
             </Head>
             <Layout className={className}>
