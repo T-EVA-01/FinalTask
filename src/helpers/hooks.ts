@@ -6,7 +6,7 @@ export function useFilters(array: IPost[], options: IOptions) {
 
     useEffect(() => {
 
-        const sortedPosts = array.sort((a, b) => options.sort === 'ASC' ? a.id - b.id : b.id - a.id);
+        const sortedPosts = array.sort((a: any, b: any) => options.sort === 'ASC' ? a.id - b.id : b.id - a.id);
 
         const filteredPosts = sortedPosts.filter((post) => {
 
