@@ -5,7 +5,12 @@ import { FormEvent, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 
 const Form = styled.div`
-    
+    width: 100%;
+
+    form {
+        display: flex;
+        justify-content: space-between;
+    }
 `
 
 interface FormProps {
@@ -44,19 +49,15 @@ const Index = ({ className }: FormProps) => {
 
     return(
         <Form className={className}>
-
             <form onSubmit={handleForm}>
-                <label>
-                    <select onChange={handleSelect}>
-                        <option value={formData.postType}></option>
-                        <option value={'new'}>new</option>
-                        <option value={'event'}>event</option>
-                    </select>
-                    <input type="text" placeholder='Поиск' onChange={handleInputChange}/>
-                </label>
+                <select onChange={handleSelect}>
+                    <option value={formData.postType}>Любая категория</option>
+                    <option value={'new'}>new</option>
+                    <option value={'event'}>event</option>
+                </select>
+                <input type="text" placeholder='Поиск по постам' onChange={handleInputChange}/>
                 <input type="submit" value={'Найти'}/>
             </form>
-
         </Form>
     )
 }

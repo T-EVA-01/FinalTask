@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { IPost } from '../../../interfaces/interfaces';
-import Image from 'next/image';
 import PostContentContainer from './PostContentContainer'
 import colors from '../../styles/colors';
 

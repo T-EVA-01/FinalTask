@@ -2,7 +2,9 @@ import Layout from '../components/Layout';
 import Posts from '../components/Posts';
 import { IndexPageProps } from '../../interfaces/interfaces';
 import { useSelector } from 'react-redux';
-import { IPost } from '../../interfaces/interfaces'
+import { IPost } from '../../interfaces/interfaces';
+import Header from '../components/Header/Header';
+import Form from '../components/Form/Form';
 
 const Home = ({ className }: IndexPageProps) => {
 
@@ -11,6 +13,9 @@ const Home = ({ className }: IndexPageProps) => {
   return (
       <Layout className={className}>
         {/* <Counter/> */}
+        <Header>
+          <Form/>
+        </Header>
         <Posts data={posts}/>
       </Layout>
   )

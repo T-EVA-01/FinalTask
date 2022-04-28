@@ -5,8 +5,6 @@ import colors from "../../styles/colors";
 const Layout = styled.main`
     position: relative;
     width: 100%;
-    height: 100%;
-    background-color: ${colors.grey};
 `
 interface LayoutProps {
     className?: string

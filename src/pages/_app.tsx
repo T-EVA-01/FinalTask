@@ -30,6 +30,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${variables.fonts.workSans}, sans-serif, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, 
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue;
     scrollbar-width: none;
+    height: 100%;
+    background-color: ${colors.grey};
   }
 
   body {
@@ -38,8 +40,8 @@ const GlobalStyles = createGlobalStyle`
   }  
   #__next {
     height: 100%;
+    
   }
-
 
   h1, h2, h3, h4, h5, span, a {
     font-size: inherit;
