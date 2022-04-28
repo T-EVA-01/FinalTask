@@ -1,1 +1,18 @@
-# NextTsReactSCProjectTemplate
+# Only Final Task
+
+Репозиторий с третьим заданием по стажировке в Only. 
+
+# Описание
+Написано на Next + React + Redux-toolkit + styled-components + TypeScript.
+
+# Установка
+Клонируем репозиторий. После клонирования необходимо запустить установку npm-пакетов:
+
+```bash
+npm install
+```
+
+# Запуск 
+
+* `npm run start` - пример команды для запуска
+* `dev` — запуск приложения в режиме разработки. Откроет `http://localhost:3000/` для просмотра в браузере.
